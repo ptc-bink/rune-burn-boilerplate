@@ -1,47 +1,104 @@
-# Getting Started with Create React App
+https://github.com/user-attachments/assets/08459f33-67cc-49d7-85d6-80e9479228ad
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rune Burn Project
 
-## Available Scripts
+Welcome to the Rune Burn Project, a decentralized application (dApp) built in the Bitcoin Rune space. This project leverages React and the Bitcoin CLI to facilitate the burning of runes. Explore the repository to learn more about how it works and how you can contribute!
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Introduction
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The Rune Burn Project is designed to provide a seamless and secure way to burn runes within the Bitcoin ecosystem. By using this dApp, users can ensure their runes are permanently removed from circulation, enhancing the value and scarcity of remaining runes.
 
-npm test
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Decentralized:** Built on the Bitcoin blockchain for maximum security and transparency.
+- **User-Friendly:** Easy-to-use interface developed with React.
+- **Efficient:** Utilizes the Bitcoin CLI for efficient and reliable operations.
+- **Open Source:** Fully open-source and available for community contributions.
 
-### `npm run build`
+1. Transfer claim amount of rune token from User wallet to Receiver wallet. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    - Get rune utxos and btc utxos in user wallet.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    - Build PSBT with user rune token and utxo balance as input and OP_RETURN value and claim amount of rune token, return rune token, change utxo as output using user wallet publickey, address, and receiver wallet address.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    - Send and Sign PSBT with user wallet.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. After confirmed transaction, Transfer and Burn rune token from Receiver wallet to Burning wallet.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    - Get rune utxos and btc utxos in receiver wallet.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    - Build PSBT with receiver rune token and utxo balance as input and OP_RETURN value and claim amount of rune token, return rune token, change utxo as output using reciver wallet WIF privatekey, address, and burning wallet address.
+    (At that time, set OP_RETURN as invalid)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    - Sign PSBT with receiver wallet.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+P.S. All necessary values are in network.config.ts.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Installation
+
+To get started with the Rune Burn Project, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ptc-bink/rune-burn-be.git
+   cd rune-burn-be
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up the Bitcoin CLI:**
+   - Ensure you have the Bitcoin CLI installed and configured on your machine.
+   - Update the `.env` file with your Bitcoin CLI configuration.
+
+4. **Start the application:**
+   ```bash
+   npm start
+   ```
+
+## Usage
+
+1. **Access the Application:**
+   - Open your browser and navigate to `https://stonefaceords.com/`.
+   
+2. **Burn Runes:**
+   - Follow the on-screen instructions to burn your runes securely.
+   - Confirm the transaction through the Bitcoin CLI.
+
+## Contributing
+
+We welcome contributions from the community! To contribute:
+
+1. Fork the repository.
+2. Create a new branch with your feature or bugfix.
+3. Submit a pull request with a detailed description of your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions, suggestions, or feedback, feel free to reach out:
+
+- Twitter: [@ptcbink](https://x.com/ptcbink)
+- GitHub: [ptcbink](https://github.com/ptc-bink)
+
+---
+
+Thank you for visiting the Rune Burn Project! We hope you find it useful and look forward to your contributions.
